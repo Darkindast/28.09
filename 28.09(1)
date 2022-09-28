@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <math.h>
+
+int poww(int chislo, int stepen){
+    
+    if (stepen==0){
+        return 1;
+    }
+    
+    return chislo*poww(chislo, stepen-1);
+}
+    
+int len(int chislo){
+    int schet = 0;
+    
+    while (chislo > 0){
+        schet += 1;
+        chislo /=10;
+    }
+    
+    return schet;
+}
+
+
+int ab(int chislo){
+    
+    if (chislo < 0){
+        chislo = chislo*(-1);
+    }
+ 
+    return chislo;
+}
+ 
+ 
+int main(){
+   
+    int chislo, h, g, s=0, k2=0, k3=0, r, p;
+    scanf("%d", &chislo);
+    p = chislo;
+    chislo = ab(chislo);
+    k3 = len(chislo);
+    r = chislo;
+    
+    for (int i =1; i <= k3; i += 1){
+        
+        k2 = len(chislo);
+        g = poww(10,k3-k2);
+        h = poww(10,k3-k2+1);
+
+        if (i %2 != 0 && i != k3){
+            s += ((r/h) % 10)*g + ((r/g) % 10)*h;   
+        }
+        
+        else if (i %2 != 0){
+            s += r / poww(10,k3-1)* poww(10,k3-1);
+        }
+        
+    chislo = chislo / 10;
+}
+
+
+if (p < 0){
+    printf("%d\n", -s);
+}
+
+else{
+    printf("%d\n", s);
+    }  
+    
+}
