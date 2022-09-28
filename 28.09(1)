@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int poww(int chislo, int stepen){ /* Функция, которая возводит число в определенную степень */
+
     if (stepen==0){
         return 1;
     }
